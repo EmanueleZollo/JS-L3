@@ -151,7 +151,7 @@ let eyeColor = {
   yellow: [],
   brown: [],
   red: [],
-  blue_gray: [],
+"blue-gray": [],
 }
 
 /* ESERCIZIO 5
@@ -174,7 +174,7 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
       eyeColor.red.push(starWarsCharacters[i])
       break;
     case 'blue-gray':
-      eyeColor.blue_gray.push(starWarsCharacters[i])
+      eyeColor["blue-gray"].push(starWarsCharacters[i])
   }
 }
 console.log(eyeColor);
@@ -183,10 +183,12 @@ console.log(eyeColor);
   Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile chiamata "crewMass".
 */
 let crewMass = 0
+let index = 0
 
-while (starWarsCharacters > 10)
-
-
+while (index < starWarsCharacters.length ) {
+  crewMass += starWarsCharacters[index].mass;
+  index++;
+}
 console.log(crewMass);
 
 /* ESERCIZIO 7
@@ -203,11 +205,11 @@ console.log(crewMass);
 
 if (crewMass < 500) {
   console.log("Ship is under loaded");
-} else if (crewMass > 500){
+} else if (crewMass > 500 && crewMass < 700){
   console.log("Ship is half loaded");
-} else if (crewMass > 700) {
+} else if (crewMass > 700 && crewMass < 900) {
   console.log("Warning: Load is over 700");
-} else if (crewMass > 900) {
+} else if (crewMass > 900 && crewMass < 1000) {
   console.log("Critical Load: Over 900");
 } else if (crewMass > 1000) {
   console.log("DANGER! OVERLOAD ALERT: escape from ship now!");
@@ -221,16 +223,32 @@ if (crewMass < 500) {
 for (let i = 0; i < starWarsCharacters.length; i++) {
   switch (starWarsCharacters[i].gender) {
     case 'n/a':
-      delete starWarsCharacters[i].gender
       starWarsCharacters[i].gender = "robot"
   }
 }
  console.log(starWarsCharacters);
+
+
 /* --EXTRA-- ESERCIZIO 9
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "characters" prima e dopo l'operazione.
 */
 
+for (let i = 0; i < femaleCharacters.length; i++) {
+  for (let j = 0; j< characters.length; j++) {
+   if (femaleCharacters[i].name === characters[j]) {
+    characters.splice(j, 1)
+   } 
+     } 
+}
+console.log(characters);
+
+
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
+
+let randElement = Math.floor(Math.random() * starWarsCharacters.length);
+console.log(starWarsCharacters[randElement]);
+
+// PENSIERO!!!!
